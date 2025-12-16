@@ -121,6 +121,14 @@ pytest tests/test_arithmetic_calculator.py
 | test_add_positive_numbers | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
 | test_add_zero_and_positive | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
 | test_add_negative_numbers | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_subtract_positive_numbers | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_multiply_negative_numbers | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_multiply_with_zero | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_divide_integer_division | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_divide_decimal_division | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_divide_negative_dividend | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_divide_by_zero_throws_exception | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_divide_by_zero_throws_exception2 | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
 
 **참고**: RED 단계에서는 모든 테스트가 실패하는 것이 정상입니다. ArithmeticCalculator 클래스가 아직 구현되지 않았기 때문입니다.
 
