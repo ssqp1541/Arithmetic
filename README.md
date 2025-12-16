@@ -14,15 +14,16 @@
 
 ## 테스트 환경
 
-- **JDK**: Java 17
-- **IDE**: IntelliJ IDEA 2023.2
+- **Python**: Python 3.8 이상
+- **IDE**: IntelliJ IDEA 2023.2 / PyCharm / VS Code
 - **운영 체제**: Windows 10
-- **테스트 프레임워크**: JUnit 5
+- **테스트 프레임워크**: pytest
 
 ## 전제 조건
 
-1. 프로그램은 오류 없이 성공적으로 컴파일되어야 합니다.
+1. Python 3.8 이상이 설치되어 있어야 합니다.
 2. 모든 종속성을 올바르게 설치하고 구성해야 합니다.
+3. 가상 환경(virtual environment) 사용을 권장합니다.
 
 ## 테스트 케이스
 
@@ -44,7 +45,7 @@
 
 | 테스트 케이스 | 입력값 | 예상값 | 중요도 | 상태 |
 |------------|--------|--------|--------|------|
-| 0으로 나누기 | 0 / 0 | ArithmeticException | 중요 | 성공 |
+| 0으로 나누기 | 0 / 0 | ZeroDivisionError | 중요 | 성공 |
 
 ## 개발 방법론
 
@@ -59,40 +60,51 @@
 ```
 Arithmetic/
 ├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── com/
-│   │           └── arithmetic/
-│   │               └── ArithmeticCalculator.java
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── arithmetic/
-│                   └── ArithmeticCalculatorTest.java
+│   └── arithmetic/
+│       ├── __init__.py
+│       └── arithmetic_calculator.py
+├── tests/
+│   └── test_arithmetic_calculator.py
 ├── README.md
-└── pom.xml (또는 build.gradle)
+└── requirements.txt
 ```
 
-## 빌드 및 실행
+## 설치 및 실행
 
-### Maven 사용 시
+### 가상 환경 설정 (권장)
 
 ```bash
-# 테스트 실행
-mvn test
+# 가상 환경 생성
+python -m venv venv
 
-# 컴파일 및 테스트
-mvn clean compile test
+# 가상 환경 활성화 (Windows)
+venv\Scripts\activate
+
+# 가상 환경 활성화 (Linux/Mac)
+source venv/bin/activate
 ```
 
-### Gradle 사용 시
+### 의존성 설치
 
 ```bash
-# 테스트 실행
-./gradlew test
+# 패키지 설치
+pip install -r requirements.txt
+```
 
-# 컴파일 및 테스트
-./gradlew clean build
+### 테스트 실행
+
+```bash
+# 모든 테스트 실행
+pytest
+
+# 상세 출력과 함께 테스트 실행
+pytest -v
+
+# 커버리지 포함 테스트 실행
+pytest --cov=src/arithmetic
+
+# 특정 테스트 파일만 실행
+pytest tests/test_arithmetic_calculator.py
 ```
 
 ## 성공/실패 기준
