@@ -112,6 +112,18 @@ pytest tests/test_arithmetic_calculator.py
 - **성공**: 모든 테스트 사례가 예상한 결과를 생성합니다.
 - **실패**: 테스트 케이스가 예상한 결과를 생성하지 않습니다.
 
+## 테스트 실행 기록
+
+### RED 단계 테스트 실행 결과
+
+| 테스트 함수 | 실행일 | 결과 | 비고 |
+|------------|--------|------|------|
+| test_add_positive_numbers | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_add_zero_and_positive | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+| test_add_negative_numbers | 2025-12-16 | 실패 | ArithmeticCalculator 클래스 미구현 (의도된 상태) |
+
+**참고**: RED 단계에서는 모든 테스트가 실패하는 것이 정상입니다. ArithmeticCalculator 클래스가 아직 구현되지 않았기 때문입니다.
+
 ## 특별 절차
 
 1. 테스트 결과를 기록하고 이에 따라 테스트 사례 문서를 업데이트합니다.
