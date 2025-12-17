@@ -179,6 +179,109 @@ pytest --cov=src/arithmetic
 pytest tests/test_arithmetic_calculator.py
 ```
 
+### 모듈 실행
+
+#### 1. 직접 실행 (실행 예제 보기)
+
+**방법 1: 원본 파일 직접 실행**
+```bash
+# Windows
+python src\arithmetic\arithmetic_calculator.py
+
+# Linux/Mac
+python src/arithmetic/arithmetic_calculator.py
+```
+
+**방법 2: 실행 스크립트 사용 (권장)**
+```bash
+# 프로젝트 루트에서 실행
+python run_example.py
+```
+
+실행하면 모든 사칙연산 기능과 예외 처리 예제가 출력됩니다.
+
+**문제 해결:**
+- 출력이 보이지 않는 경우:
+  1. Python 버전 확인: `python --version` (Python 3.8 이상 필요)
+  2. 파일 인코딩 확인: UTF-8로 저장되어 있는지 확인
+  3. 터미널 인코딩 확인: Windows에서는 `chcp 65001` 실행 후 재시도
+  4. `run_example.py` 사용 (더 안정적)
+
+#### 2. 대화형 콘솔 프로그램 실행
+
+**간단한 사칙연산 콘솔 프로그램 (입력 받기)**
+
+```bash
+python console_calculator.py
+```
+
+실행 예시:
+```
+입력화면
+첫번째 정수값 >>10
+연산자>>+
+두번째 정수값>>30
+
+결과 뷰 화면
+==============================
+10+30을 계산합니다.
+==============================
+10+30=40입니다.
+```
+
+**지원하는 연산자:**
+- `+` : 덧셈
+- `-` : 뺄셈
+- `*` : 곱셈
+- `/` : 정수 나눗셈
+- `÷` : 소수점 나눗셈
+
+#### 3. Python 코드에서 사용하기
+
+```python
+# 모듈 import
+from arithmetic.arithmetic_calculator import ArithmeticCalculator
+
+# 계산기 인스턴스 생성
+calc = ArithmeticCalculator()
+
+# 덧셈
+result = calc.add(1, 10)  # 결과: 11
+
+# 뺄셈
+result = calc.subtract(5, 2)  # 결과: 3
+
+# 곱셈
+result = calc.multiply(-5, -3)  # 결과: 15
+
+# 정수 나눗셈
+result = calc.divide(5, 2)  # 결과: 2
+
+# 소수점 나눗셈
+result = calc.divide_quotient(5, 2)  # 결과: 2.5
+
+# 예외 처리
+try:
+    result = calc.divide(5, 0)
+except ZeroDivisionError as e:
+    print(f"에러: {e}")  # 출력: 에러: Division by zero is not allowed
+```
+
+#### 3. 대화형 Python에서 사용하기
+
+```bash
+# Python 대화형 모드 실행
+python
+
+# Python 대화형 모드에서
+>>> from arithmetic.arithmetic_calculator import ArithmeticCalculator
+>>> calc = ArithmeticCalculator()
+>>> calc.add(1, 10)
+11
+>>> calc.divide_quotient(5, 2)
+2.5
+```
+
 ## 성공/실패 기준
 
 - **성공**: 모든 테스트 사례가 예상한 결과를 생성합니다.

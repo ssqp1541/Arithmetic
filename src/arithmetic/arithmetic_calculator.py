@@ -82,6 +82,11 @@ class ArithmeticCalculator:
 
 if __name__ == "__main__":
     """실행 예제: ArithmeticCalculator 사용 예시"""
+    import sys
+    
+    # 출력 버퍼링 비활성화 (즉시 출력)
+    sys.stdout.reconfigure(encoding='utf-8')
+    
     print("=" * 60)
     print("ArithmeticCalculator - 사칙연산 계산기 실행 예제")
     print("=" * 60)
@@ -121,17 +126,31 @@ if __name__ == "__main__":
     
     # 예외 처리 예제
     print("【 예외 처리 (Exception Handling) 】")
+    print("  divide() 메서드:")
     try:
         result = calc.divide(5, 0)
-        print(f"  5 / 0 = {result}")
+        print(f"    5 / 0 = {result}")
     except ZeroDivisionError as e:
-        print(f"  5 / 0 → ZeroDivisionError: {e}")
+        print(f"    5 / 0 → ZeroDivisionError: {e}")
     
     try:
         result = calc.divide(0, 0)
-        print(f"  0 / 0 = {result}")
+        print(f"    0 / 0 = {result}")
     except ZeroDivisionError as e:
-        print(f"  0 / 0 → ZeroDivisionError: {e}")
+        print(f"    0 / 0 → ZeroDivisionError: {e}")
+    
+    print("  divide_quotient() 메서드:")
+    try:
+        result = calc.divide_quotient(5, 0)
+        print(f"    5 / 0 = {result}")
+    except ZeroDivisionError as e:
+        print(f"    5 / 0 → ZeroDivisionError: {e}")
+    
+    try:
+        result = calc.divide_quotient(0, 0)
+        print(f"    0 / 0 = {result}")
+    except ZeroDivisionError as e:
+        print(f"    0 / 0 → ZeroDivisionError: {e}")
     print()
     
     print("=" * 60)
