@@ -154,3 +154,23 @@ class TestArithmeticCalculator:
         with pytest.raises(ZeroDivisionError, match=".*"):
             calculator.divide(a, b)
 
+    def test_divide_quotient_by_zero_throws_exception(self, calculator):
+        """예외 처리 테스트: 5 / 0 (divide_quotient) → ZeroDivisionError"""
+        # Given
+        a = 5
+        b = 0
+
+        # When & Then
+        with pytest.raises(ZeroDivisionError, match=".*"):
+            calculator.divide_quotient(a, b)
+
+    def test_divide_quotient_zero_by_zero_throws_exception(self, calculator):
+        """예외 처리 테스트: 0 / 0 (divide_quotient) → ZeroDivisionError"""
+        # Given
+        a = 0
+        b = 0
+
+        # When & Then
+        with pytest.raises(ZeroDivisionError, match=".*"):
+            calculator.divide_quotient(a, b)
+

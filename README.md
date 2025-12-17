@@ -51,9 +51,81 @@
 
 ### RED-GREEN-REFACTOR 사이클
 
-1. **RED**: 실패하는 테스트를 먼저 작성  - 진행 중
-2. **GREEN**: 테스트를 통과하는 최소한의 코드 작성
+1. **RED**: 실패하는 테스트를 먼저 작성  - ✅ 완료
+2. **GREEN**: 테스트를 통과하는 최소한의 코드 작성 - ⏳ 진행 예정
 3. **REFACTOR**: 코드를 개선하고 리팩토링
+
+### GREEN 단계 구현 목록
+
+#### 기능 요구사항 (Functional Requirements)
+
+1. **ArithmeticCalculator 클래스 구현**
+   - 위치: `src/arithmetic/arithmetic_calculator.py`
+   - 사칙연산을 수행하는 메인 클래스
+
+2. **덧셈 기능 (add 메서드)** - 우선순위: 높음
+   - 메서드 시그니처: `add(a: int, b: int) -> int`
+   - 처리 케이스:
+     - 양수 + 양수: `1 + 10 = 11`
+     - 0 + 양수: `0 + 1 = 1`
+     - 음수 + 음수: `-1 + (-10) = -11`
+
+3. **뺄셈 기능 (subtract 메서드)** - 우선순위: 높음
+   - 메서드 시그니처: `subtract(a: int, b: int) -> int`
+   - 처리 케이스:
+     - 양수 - 양수: `5 - 2 = 3`
+
+4. **곱셈 기능 (multiply 메서드)** - 우선순위: 중간
+   - 메서드 시그니처: `multiply(a: int, b: int) -> int`
+   - 처리 케이스:
+     - 음수 × 음수: `-5 * -3 = 15`
+     - 0 × 양수: `0 * 10 = 0`
+
+5. **정수 나눗셈 기능 (divide 메서드)** - 우선순위: 높음
+   - 메서드 시그니처: `divide(a: int, b: int) -> int`
+   - 처리 케이스:
+     - 정수 나눗셈: `5 / 2 = 2` (정수 몫 반환)
+     - 음수 피제수: `-10 / 2 = -5`
+
+6. **소수점 나눗셈 기능 (divide_quotient 메서드)** - 우선순위: 중간
+   - 메서드 시그니처: `divide_quotient(a: int, b: int) -> float`
+   - 처리 케이스:
+     - 소수점 나눗셈: `5 ÷ 2 = 2.5` (부동소수점 결과 반환)
+
+#### 비기능 요구사항 (Non-Functional Requirements) _ 작업완료
+
+1. **예외 처리 (Exception Handling)** - 우선순위: 높음
+   - 요구사항: 0으로 나누기 시 `ZeroDivisionError` 예외 발생
+   - 적용 메서드: `divide()`, `divide_quotient()`
+   - 테스트 케이스:
+     - `0 / 0` → `ZeroDivisionError`
+     - `5 / 0` → `ZeroDivisionError`
+
+2. **정확도 (Accuracy)** - 우선순위: 중간
+   - 요구사항: 소수점 나눗셈 결과의 정확도 보장
+   - 검증 기준: `abs(result - expected) < 0.0001`
+   - 적용 메서드: `divide_quotient()`
+
+3. **테스트 커버리지 (Test Coverage)** - 우선순위: 높음
+   - 목표: 100% 커버리지
+   - 범위: 모든 메서드와 예외 케이스 포함
+
+4. **코드 품질 (Code Quality)**
+   - 요구사항: Given-When-Then 패턴 준수
+   - 모듈 구조: `arithmetic.arithmetic_calculator` 모듈로 import 가능해야 함
+
+#### 구현 체크리스트
+
+- [ ] `src/arithmetic/arithmetic_calculator.py` 파일 생성
+- [ ] `ArithmeticCalculator` 클래스 정의
+- [ ] `add(a, b)` 메서드 구현
+- [ ] `subtract(a, b)` 메서드 구현
+- [ ] `multiply(a, b)` 메서드 구현
+- [ ] `divide(a, b)` 메서드 구현 (정수 나눗셈)
+- [ ] `divide_quotient(a, b)` 메서드 구현 (소수점 나눗셈)
+- [ ] 0으로 나누기 예외 처리 (`ZeroDivisionError`)
+- [ ] 모든 테스트 통과 확인 (11개 테스트)
+- [ ] 테스트 커버리지 100% 달성
 
 ## 프로젝트 구조
 
@@ -105,6 +177,109 @@ pytest --cov=src/arithmetic
 
 # 특정 테스트 파일만 실행
 pytest tests/test_arithmetic_calculator.py
+```
+
+### 모듈 실행
+
+#### 1. 직접 실행 (실행 예제 보기)
+
+**방법 1: 원본 파일 직접 실행**
+```bash
+# Windows
+python src\arithmetic\arithmetic_calculator.py
+
+# Linux/Mac
+python src/arithmetic/arithmetic_calculator.py
+```
+
+**방법 2: 실행 스크립트 사용 (권장)**
+```bash
+# 프로젝트 루트에서 실행
+python run_example.py
+```
+
+실행하면 모든 사칙연산 기능과 예외 처리 예제가 출력됩니다.
+
+**문제 해결:**
+- 출력이 보이지 않는 경우:
+  1. Python 버전 확인: `python --version` (Python 3.8 이상 필요)
+  2. 파일 인코딩 확인: UTF-8로 저장되어 있는지 확인
+  3. 터미널 인코딩 확인: Windows에서는 `chcp 65001` 실행 후 재시도
+  4. `run_example.py` 사용 (더 안정적)
+
+#### 2. 대화형 콘솔 프로그램 실행
+
+**간단한 사칙연산 콘솔 프로그램 (입력 받기)**
+
+```bash
+python console_calculator.py
+```
+
+실행 예시:
+```
+입력화면
+첫번째 정수값 >>10
+연산자>>+
+두번째 정수값>>30
+
+결과 뷰 화면
+==============================
+10+30을 계산합니다.
+==============================
+10+30=40입니다.
+```
+
+**지원하는 연산자:**
+- `+` : 덧셈
+- `-` : 뺄셈
+- `*` : 곱셈
+- `/` : 정수 나눗셈
+- `÷` : 소수점 나눗셈
+
+#### 3. Python 코드에서 사용하기
+
+```python
+# 모듈 import
+from arithmetic.arithmetic_calculator import ArithmeticCalculator
+
+# 계산기 인스턴스 생성
+calc = ArithmeticCalculator()
+
+# 덧셈
+result = calc.add(1, 10)  # 결과: 11
+
+# 뺄셈
+result = calc.subtract(5, 2)  # 결과: 3
+
+# 곱셈
+result = calc.multiply(-5, -3)  # 결과: 15
+
+# 정수 나눗셈
+result = calc.divide(5, 2)  # 결과: 2
+
+# 소수점 나눗셈
+result = calc.divide_quotient(5, 2)  # 결과: 2.5
+
+# 예외 처리
+try:
+    result = calc.divide(5, 0)
+except ZeroDivisionError as e:
+    print(f"에러: {e}")  # 출력: 에러: Division by zero is not allowed
+```
+
+#### 3. 대화형 Python에서 사용하기
+
+```bash
+# Python 대화형 모드 실행
+python
+
+# Python 대화형 모드에서
+>>> from arithmetic.arithmetic_calculator import ArithmeticCalculator
+>>> calc = ArithmeticCalculator()
+>>> calc.add(1, 10)
+11
+>>> calc.divide_quotient(5, 2)
+2.5
 ```
 
 ## 성공/실패 기준
