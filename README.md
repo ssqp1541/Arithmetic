@@ -51,9 +51,81 @@
 
 ### RED-GREEN-REFACTOR 사이클
 
-1. **RED**: 실패하는 테스트를 먼저 작성  - 진행 중
-2. **GREEN**: 테스트를 통과하는 최소한의 코드 작성
+1. **RED**: 실패하는 테스트를 먼저 작성  - ✅ 완료
+2. **GREEN**: 테스트를 통과하는 최소한의 코드 작성 - ⏳ 진행 예정
 3. **REFACTOR**: 코드를 개선하고 리팩토링
+
+### GREEN 단계 구현 목록
+
+#### 기능 요구사항 (Functional Requirements)
+
+1. **ArithmeticCalculator 클래스 구현**
+   - 위치: `src/arithmetic/arithmetic_calculator.py`
+   - 사칙연산을 수행하는 메인 클래스
+
+2. **덧셈 기능 (add 메서드)** - 우선순위: 높음
+   - 메서드 시그니처: `add(a: int, b: int) -> int`
+   - 처리 케이스:
+     - 양수 + 양수: `1 + 10 = 11`
+     - 0 + 양수: `0 + 1 = 1`
+     - 음수 + 음수: `-1 + (-10) = -11`
+
+3. **뺄셈 기능 (subtract 메서드)** - 우선순위: 높음
+   - 메서드 시그니처: `subtract(a: int, b: int) -> int`
+   - 처리 케이스:
+     - 양수 - 양수: `5 - 2 = 3`
+
+4. **곱셈 기능 (multiply 메서드)** - 우선순위: 중간
+   - 메서드 시그니처: `multiply(a: int, b: int) -> int`
+   - 처리 케이스:
+     - 음수 × 음수: `-5 * -3 = 15`
+     - 0 × 양수: `0 * 10 = 0`
+
+5. **정수 나눗셈 기능 (divide 메서드)** - 우선순위: 높음
+   - 메서드 시그니처: `divide(a: int, b: int) -> int`
+   - 처리 케이스:
+     - 정수 나눗셈: `5 / 2 = 2` (정수 몫 반환)
+     - 음수 피제수: `-10 / 2 = -5`
+
+6. **소수점 나눗셈 기능 (divide_quotient 메서드)** - 우선순위: 중간
+   - 메서드 시그니처: `divide_quotient(a: int, b: int) -> float`
+   - 처리 케이스:
+     - 소수점 나눗셈: `5 ÷ 2 = 2.5` (부동소수점 결과 반환)
+
+#### 비기능 요구사항 (Non-Functional Requirements)
+
+1. **예외 처리 (Exception Handling)** - 우선순위: 높음
+   - 요구사항: 0으로 나누기 시 `ZeroDivisionError` 예외 발생
+   - 적용 메서드: `divide()`, `divide_quotient()`
+   - 테스트 케이스:
+     - `0 / 0` → `ZeroDivisionError`
+     - `5 / 0` → `ZeroDivisionError`
+
+2. **정확도 (Accuracy)** - 우선순위: 중간
+   - 요구사항: 소수점 나눗셈 결과의 정확도 보장
+   - 검증 기준: `abs(result - expected) < 0.0001`
+   - 적용 메서드: `divide_quotient()`
+
+3. **테스트 커버리지 (Test Coverage)** - 우선순위: 높음
+   - 목표: 100% 커버리지
+   - 범위: 모든 메서드와 예외 케이스 포함
+
+4. **코드 품질 (Code Quality)**
+   - 요구사항: Given-When-Then 패턴 준수
+   - 모듈 구조: `arithmetic.arithmetic_calculator` 모듈로 import 가능해야 함
+
+#### 구현 체크리스트
+
+- [ ] `src/arithmetic/arithmetic_calculator.py` 파일 생성
+- [ ] `ArithmeticCalculator` 클래스 정의
+- [ ] `add(a, b)` 메서드 구현
+- [ ] `subtract(a, b)` 메서드 구현
+- [ ] `multiply(a, b)` 메서드 구현
+- [ ] `divide(a, b)` 메서드 구현 (정수 나눗셈)
+- [ ] `divide_quotient(a, b)` 메서드 구현 (소수점 나눗셈)
+- [ ] 0으로 나누기 예외 처리 (`ZeroDivisionError`)
+- [ ] 모든 테스트 통과 확인 (11개 테스트)
+- [ ] 테스트 커버리지 100% 달성
 
 ## 프로젝트 구조
 
