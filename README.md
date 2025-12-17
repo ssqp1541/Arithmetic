@@ -92,7 +92,7 @@
    - 처리 케이스:
      - 소수점 나눗셈: `5 ÷ 2 = 2.5` (부동소수점 결과 반환)
 
-#### 비기능 요구사항 (Non-Functional Requirements)
+#### 비기능 요구사항 (Non-Functional Requirements) _ 작업완료
 
 1. **예외 처리 (Exception Handling)** - 우선순위: 높음
    - 요구사항: 0으로 나누기 시 `ZeroDivisionError` 예외 발생
