@@ -312,6 +312,31 @@ python
 1. 테스트 결과를 기록하고 이에 따라 테스트 사례 문서를 업데이트합니다.
 2. 즉각적인 해결을 위해 모든 실패를 개발팀에 전달하세요.
 
+## Refactoring 후 해야할 목록
+
+### Phase 3: PyQt GUI 구현
+
+**목표**: PyQt를 사용한 GUI 구현
+
+**작업 내용:**
+1. `requirements.txt`에 PyQt6 추가
+2. `CalculatorView` 클래스 구현 (QWidget 상속)
+   - 디스플레이 (QLabel 또는 QLineEdit)
+   - 버튼 그리드 (QGridLayout)
+   - 이미지에 표시된 버튼 레이아웃 구현
+3. `CalculatorWindow` 클래스 구현 (메인 윈도우)
+4. 이벤트 핸들러 연결
+5. Controller와 View 연결
+
+**예상 파일 구조:**
+```
+src/
+  └─ ui/
+      ├─ calculator_view.py (PyQt 위젯)
+      └─ calculator_window.py (메인 윈도우)
+gui_calculator.py (진입점)
+```
+
 ## 작성자
 
 - **작성자**: 홍길동
